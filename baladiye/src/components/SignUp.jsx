@@ -9,11 +9,14 @@ import {
   Phone,
   CheckCircle,
 } from 'lucide-react';
+import { useAuth } from '../Context/AuthContext';
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const { signup } = useAuth();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
 
   // Form state with validation errors
   const [formData, setFormData] = useState({
@@ -96,6 +99,9 @@ const SignUp = () => {
       [name]: newValue,
     }));
 
+    // Reset general error when user makes changes
+    setError('');
+
     // Validate on change
     let errorMessage = '';
     switch (name) {
@@ -153,26 +159,6 @@ const SignUp = () => {
     return !Object.values(newErrors).some((error) => error !== '');
   };
 
-  // Mock signup API request
-  const mockSignupRequest = async (userData) => {
-    return new Promise((resolve) => {
-      // Simulate network delay
-      setTimeout(() => {
-        // 10% chance of random failure for testing
-        const success = Math.random() > 0.1;
-
-        if (success) {
-          resolve({ success: true, message: 'تم إنشاء الحساب بنجاح' });
-        } else {
-          resolve({
-            success: false,
-            message: 'حدث خطأ أثناء التسجيل، يرجى المحاولة مرة أخرى',
-          });
-        }
-      }, 1500); // 1.5 second delay
-    });
-  };
-
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -183,25 +169,27 @@ const SignUp = () => {
 
     // Start loading
     setLoading(true);
+    setError('');
 
     try {
-      // Simulate API call
-      const response = await mockSignupRequest(formData);
+      // Use the signup method from AuthContext
+      await signup({
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        password: formData.password,
+      });
 
-      if (response.success) {
-        // Show success message
-        setSuccess(true);
+      // Show success message
+      setSuccess(true);
 
-        // Wait before redirecting
-        setTimeout(() => {
-          navigate('/signin');
-        }, 2000);
-      } else {
-        // Show error message
-        alert(response.message);
-      }
+      // Wait before redirecting
+      setTimeout(() => {
+        navigate('/signin');
+      }, 2000);
     } catch (error) {
-      alert('حدث خطأ غير متوقع، يرجى المحاولة مرة أخرى');
+      // Show error message
+      setError(error.message);
     } finally {
       setLoading(false);
     }
@@ -291,6 +279,12 @@ const SignUp = () => {
 
         {/* نموذج إنشاء الحساب */}
         <div className='p-8'>
+          {error && (
+            <div className='mb-4 rounded-lg bg-red-50 p-4 text-sm text-red-700'>
+              {error}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} noValidate>
             {/* الاسم الكامل */}
             <div className='mb-4'>
@@ -526,7 +520,7 @@ const SignUp = () => {
             {/* زر إنشاء الحساب */}
             <button
               type='submit'
-              className='mb-4 w-full rounded-lg bg-gradient-to-r from-blue-600 to-indigo-700 py-3 text-center text-sm font-medium text-white shadow-md transition-all hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-300 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed'
+              className='mb-4 w-full rounded-lg bg-gradient-to-r from-blue-600 to-indigo-700 py-3 text-center text-sm font-medium text-white shadow-md transition-all hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-300 disabled:cursor-not-allowed disabled:opacity-70'
               disabled={
                 !formData.agreeTerms ||
                 Object.values(errors).some((error) => error) ||
