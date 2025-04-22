@@ -239,7 +239,7 @@ const SignUp = () => {
   if (success) {
     return (
       <div
-        className='flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-indigo-100 to-blue-50 p-4'
+        className='flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-green-100 to-green-50 p-4'
         dir='rtl'
       >
         <div className='w-full max-w-md rounded-2xl bg-white p-8 text-center shadow-xl'>
@@ -254,7 +254,7 @@ const SignUp = () => {
           </p>
           <Link
             to='/signin'
-            className='inline-block rounded-lg bg-blue-600 px-6 py-3 text-center font-medium text-white transition-all hover:bg-blue-700'
+            className='inline-block rounded-lg bg-green-700 px-6 py-3 text-center font-medium text-white transition-all hover:bg-green-800'
           >
             الذهاب إلى تسجيل الدخول
           </Link>
@@ -265,15 +265,18 @@ const SignUp = () => {
 
   return (
     <div
-      className='flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-indigo-100 to-blue-50 p-4'
+      className='flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-green-100 to-green-50 p-4'
       dir='rtl'
     >
       <div className='w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-xl'>
         {/* رأس الصفحة */}
-        <div className='bg-gradient-to-r from-blue-600 to-indigo-700 px-8 py-10 text-center text-white'>
-          <h1 className='mb-3 text-3xl font-bold'>إنشاء حساب جديد</h1>
-          <p className='text-blue-100'>
-            انضم إلينا اليوم واستمتع بجميع المميزات
+        <div className='bg-gradient-to-r from-green-700 to-green-900 px-8 py-10 text-center text-white'>
+          <h1 className='mb-2 text-3xl font-bold'>بلدية برج الملوك</h1>
+          <p className='mb-1 text-lg font-medium text-green-100'>
+            قضاء مرجعيون - محافظة النبطية
+          </p>
+          <p className='text-green-200'>
+            إنشاء حساب جديد في البوابة الإلكترونية
           </p>
         </div>
 
@@ -304,7 +307,7 @@ const SignUp = () => {
                   className={`w-full rounded-lg border px-4 py-3 pr-10 text-right focus:outline-none focus:ring-2 ${
                     errors.fullName
                       ? 'border-red-500 focus:border-red-500 focus:ring-red-200'
-                      : 'border-gray-300 focus:border-blue-500 focus:ring-blue-200'
+                      : 'border-gray-300 focus:border-green-500 focus:ring-green-200'
                   }`}
                   placeholder='أدخل اسمك الكامل'
                   required
@@ -334,7 +337,7 @@ const SignUp = () => {
                   className={`w-full rounded-lg border px-4 py-3 pr-10 text-right focus:outline-none focus:ring-2 ${
                     errors.email
                       ? 'border-red-500 focus:border-red-500 focus:ring-red-200'
-                      : 'border-gray-300 focus:border-blue-500 focus:ring-blue-200'
+                      : 'border-gray-300 focus:border-green-500 focus:ring-green-200'
                   }`}
                   placeholder='أدخل بريدك الإلكتروني'
                   required
@@ -364,7 +367,7 @@ const SignUp = () => {
                   className={`w-full rounded-lg border px-4 py-3 pr-10 text-right focus:outline-none focus:ring-2 ${
                     errors.phone
                       ? 'border-red-500 focus:border-red-500 focus:ring-red-200'
-                      : 'border-gray-300 focus:border-blue-500 focus:ring-blue-200'
+                      : 'border-gray-300 focus:border-green-500 focus:ring-green-200'
                   }`}
                   placeholder='أدخل رقم هاتفك'
                   required
@@ -397,7 +400,7 @@ const SignUp = () => {
                   className={`w-full rounded-lg border px-4 py-3 pr-10 text-right focus:outline-none focus:ring-2 ${
                     errors.password
                       ? 'border-red-500 focus:border-red-500 focus:ring-red-200'
-                      : 'border-gray-300 focus:border-blue-500 focus:ring-blue-200'
+                      : 'border-gray-300 focus:border-green-500 focus:ring-green-200'
                   }`}
                   placeholder='أدخل كلمة المرور'
                   required
@@ -459,7 +462,7 @@ const SignUp = () => {
                   className={`w-full rounded-lg border px-4 py-3 pr-10 text-right focus:outline-none focus:ring-2 ${
                     errors.confirmPassword
                       ? 'border-red-500 focus:border-red-500 focus:ring-red-200'
-                      : 'border-gray-300 focus:border-blue-500 focus:ring-blue-200'
+                      : 'border-gray-300 focus:border-green-500 focus:ring-green-200'
                   }`}
                   placeholder='أعد إدخال كلمة المرور'
                   required
@@ -491,7 +494,7 @@ const SignUp = () => {
                 type='checkbox'
                 checked={formData.agreeTerms}
                 onChange={handleChange}
-                className='h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500'
+                className='h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500'
                 required
               />
               <label
@@ -501,7 +504,7 @@ const SignUp = () => {
                 أوافق على{' '}
                 <button
                   type='button'
-                  className='font-medium text-blue-600 hover:text-blue-800'
+                  className='font-medium text-green-700 hover:text-green-800'
                   onClick={() => console.log('عرض الشروط والأحكام')}
                 >
                   الشروط والأحكام
@@ -509,7 +512,7 @@ const SignUp = () => {
                 و{' '}
                 <button
                   type='button'
-                  className='font-medium text-blue-600 hover:text-blue-800'
+                  className='font-medium text-green-700 hover:text-green-800'
                   onClick={() => console.log('عرض سياسة الخصوصية')}
                 >
                   سياسة الخصوصية
@@ -520,7 +523,7 @@ const SignUp = () => {
             {/* زر إنشاء الحساب */}
             <button
               type='submit'
-              className='mb-4 w-full rounded-lg bg-gradient-to-r from-blue-600 to-indigo-700 py-3 text-center text-sm font-medium text-white shadow-md transition-all hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-300 disabled:cursor-not-allowed disabled:opacity-70'
+              className='mb-4 w-full rounded-lg bg-gradient-to-r from-green-700 to-green-800 py-3 text-center text-sm font-medium text-white shadow-md transition-all hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-300 disabled:cursor-not-allowed disabled:opacity-70'
               disabled={
                 !formData.agreeTerms ||
                 Object.values(errors).some((error) => error) ||
@@ -560,7 +563,7 @@ const SignUp = () => {
               لديك حساب بالفعل؟{' '}
               <Link
                 to='/signin'
-                className='font-medium text-blue-600 hover:text-blue-800'
+                className='font-medium text-green-700 hover:text-green-800'
               >
                 تسجيل الدخول
               </Link>

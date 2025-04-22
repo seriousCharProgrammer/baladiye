@@ -315,7 +315,7 @@ const Dashboard = () => {
           <div className='flex items-center justify-between'>
             <div className='flex items-center'>
               <img
-                src='/api/placeholder/60/60'
+                src='/borj_moulouk2.png'
                 alt='شعار بلدية برج الملوك'
                 className='h-12 w-12 rounded-full mr-3'
               />
@@ -334,7 +334,7 @@ const Dashboard = () => {
               </span>
               <button
                 onClick={handleLogout}
-                className='flex items-center rounded-full bg-white bg-opacity-20 px-3 py-1 text-sm text-white hover:bg-opacity-30'
+                className='flex items-center gap-1 rounded-lg bg-red-600 px-4 py-2 text-sm text-white shadow-md transition-all hover:bg-red-700 hover:shadow-lg focus:ring-2 focus:ring-red-500 focus:ring-offset-2'
               >
                 <LogOut className='ml-1 h-4 w-4' />
                 تسجيل الخروج
